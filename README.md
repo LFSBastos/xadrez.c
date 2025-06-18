@@ -1,9 +1,17 @@
 ♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜ Simulador de Movimentos de Xadrez em C ♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜
 
-Descrição
+📝Descrição
 Este programa em C simula os movimentos básicos de três peças de xadrez: Torre, Bispo e Rainha, utilizando diferentes estruturas de repetição.
 
-Funcionalidades
-Simula o movimento da Torre (5 casas para a direita) usando for
-Simula o movimento do Bispo (5 casas na diagonal superior direita) usando while
-Simula o movimento da Rainha (8 casas para a esquerda) usando do-while
+♟️ Funcionalidades
+♜ Torre
+Move 5 casas para a direita, utilizando a estrutura de repetição for.
+
+♝ Bispo
+Move 5 casas na diagonal superior direita, utilizando while.
+
+♛ Rainha
+Move 8 casas para a esquerda, utilizando do-while.
+
+♞ Cavalo
+Simula um movimento em L: 2 casas para baixo e 1 casa para a esquerda, utilizando for + while.
