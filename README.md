@@ -4,14 +4,23 @@
 Este programa em C simula os movimentos básicos de três peças de xadrez: Torre, Bispo e Rainha, utilizando diferentes estruturas de repetição.
 
 ♟️ Funcionalidades
+
 ♜ Torre
-Move 5 casas para a direita, utilizando a estrutura de repetição for.
+Move em linha reta (cima/baixo/esquerda/direita)
+
+Usa recursão
+
+Usa recursão
 
 ♝ Bispo
-Move 5 casas na diagonal superior direita, utilizando while.
+Move na diagonal
 
 ♛ Rainha
-Move 8 casas para a esquerda, utilizando do-while.
+Combina movimentos da Torre e Bispo
+
+Usa recursão
 
 ♞ Cavalo
-Simula um movimento em L: 2 casas para baixo e 1 casa para a esquerda, utilizando for + while.
+Move em "L" (2 casas pra cima + 1 pra direita)
+
+Usa loops complexos
