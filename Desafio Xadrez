@@ -1,42 +1,91 @@
 #include <stdio.h>
 
-int main() {
-    // Movimento da Torre (5 casas para a direita) - usando FOR
-    printf("Movimento da Torre (5 casas para a direita):\n");
-    for (int i = 1; i <= 5; i++) {
-        printf("Direita\n");  // Torre move em linha reta horizontal
-    }
-
-    // Movimento do Bispo (5 casas na diagonal superior direita) - usando WHILE
-    printf("\nMovimento do Bispo (5 casas na diagonal superior direita):\n");
-    int casa_bispo = 1;
-    while (casa_bispo <= 5) {
-        printf("Cima, Direita\n");  // Bispo move na diagonal
-        casa_bispo++;
-    }
-
-    // Movimento da Rainha (8 casas para a esquerda) - usando DO-WHILE
-    printf("\nMovimento da Rainha (8 casas para a esquerda):\n");
-    int casa_rainha = 1;
-    do {
-        printf("Esquerda\n");  // Rainha pode mover em linha reta como a Torre
-        casa_rainha++;
-    } while (casa_rainha <= 8);
-
-    // Movimento do Cavalo (2 casas para baixo e 1 para esquerda) - usando loops aninhados
-    printf("\nMovimento do Cavalo (2 casas para baixo e 1 para esquerda):\n");
+// Função recursiva para mover a Torre
+void moverTorreRecursivo(int casas, char direcao) {
+    if (casas <= 0) return; // Caso base da recursão
     
-    // Primeira parte do L: 2 casas para baixo (usando FOR)
-    for (int i = 1; i <= 2; i++) {
+    if (direcao == 'd') {
+        printf("Direita\n");
+    } else if (direcao == 'e') {
+        printf("Esquerda\n");
+    } else if (direcao == 'c') {
+        printf("Cima\n");
+    } else if (direcao == 'b') {
         printf("Baixo\n");
     }
     
-    // Segunda parte do L: 1 casa para esquerda (usando WHILE)
-    int movimento_lateral = 1;
-    while (movimento_lateral <= 1) {
-        printf("Esquerda\n");
-        movimento_lateral++;
-    }
+    moverTorreRecursivo(casas - 1, direcao); // Chamada recursiva
+}
 
+// Função recursiva para mover o Bispo
+void moverBispoRecursivo(int casas, char diagonal) {
+    if (casas <= 0) return; // Caso base
+    
+    switch(diagonal) {
+        case '1': // Diagonal superior direita
+            printf("Cima, Direita\n");
+            break;
+        case '2': // Diagonal superior esquerda
+            printf("Cima, Esquerda\n");
+            break;
+        case '3': // Diagonal inferior direita
+            printf("Baixo, Direita\n");
+            break;
+        case '4': // Diagonal inferior esquerda
+            printf("Baixo, Esquerda\n");
+            break;
+    }
+    
+    moverBispoRecursivo(casas - 1, diagonal); // Chamada recursiva
+}
+
+// Função para mover o Bispo com loops aninhados
+void moverBispoLoopsAninhados(int tamanho) {
+    // Loop externo para vertical
+    for (int i = 1; i <= tamanho; i++) {
+        // Loop interno para horizontal
+        for (int j = 1; j <= tamanho; j++) {
+            if (i == j) { // Apenas nas diagonais
+                printf("Cima, Direita\n");
+                break; // Só uma iteração por loop interno
+            }
+        }
+    }
+}
+
+// Função para mover o Cavalo com loops complexos
+void moverCavaloComplexo(int passos) {
+    for (int movimento = 1; movimento <= passos; movimento++) {
+        // Primeira parte do L (2 casas para cima)
+        for (int i = 1; i <= 2; i++) {
+            printf("Cima\n");
+        }
+        
+        // Segunda parte do L (1 casa para direita)
+        printf("Direita\n");
+        
+        // Separador entre movimentos
+        if (movimento < passos) {
+            printf("--- Fim do movimento %d ---\n", movimento);
+        }
+    }
+}
+
+int main() {
+    printf("=== Movimento da Torre (recursivo - 5 casas para direita) ===\n");
+    moverTorreRecursivo(5, 'd');
+    
+    printf("\n=== Movimento do Bispo (recursivo - 5 casas diagonal sup. direita) ===\n");
+    moverBispoRecursivo(5, '1');
+    
+    printf("\n=== Movimento do Bispo com loops aninhados (5 casas) ===\n");
+    moverBispoLoopsAninhados(5);
+    
+    printf("\n=== Movimento da Rainha (8 casas para esquerda - modificado para recursivo) ===\n");
+    moverTorreRecursivo(8, 'e'); // Rainha se move como torre
+    
+    printf("\n=== Movimento do Cavalo complexo (2 movimentos em L) ===\n");
+    moverCavaloComplexo(2);
+    
     return 0;
 }
